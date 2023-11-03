@@ -1,5 +1,8 @@
-const express = require('express');
-const app = express ();
+/* -------------------------------------------------------------------------- */
+/*                               index || Server                              */
+/* -------------------------------------------------------------------------- */
+
+const app= require('./src/app');
 require("dotenv").config();
 
 const {  PORT } = process.env;
