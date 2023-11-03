@@ -7,26 +7,20 @@
 
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+
+
+ //* the will let us get data the data form post
+ app.use(express.json());
+ app.use(bodyParser.urlencoded({ extended: true }));
+ app.use(bodyParser.json());
+
 
 //* global midleware for not router
 app.use((req, res,err) => {
   res.status(404).json({ message: "Root Not Found" });
 });
 
-const User = require("./models/user") 
 
-app.post("/user" ,(res,req)=>{
-    // let data = req.body;
-    // const user = await User.create({
-    //   name: data.name,
-    //   email: data.email,
-    //   password: data.password,
-    
-    // });
-  
-    // res.json(user);
-    res.send('hee')
-
-})
 
 module.exports = app;
