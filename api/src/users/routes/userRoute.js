@@ -10,7 +10,7 @@ const routerUser = express.Router();
 
 routerUser 
 
-    .get("/register", authController.register)
+    .post("/register", authController.register)
 
 
 

@@ -9,6 +9,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
+  //* Require Routes
+const authRoutes = require("./users/routes/userRoute");
+//* Register Our Routes
+app.use("/api/users/", authRoutes);
 
  //* the will let us get data the data form post
  app.use(express.json());

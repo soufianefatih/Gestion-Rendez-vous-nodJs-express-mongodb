@@ -17,7 +17,7 @@ const registerSchema = Joi.object({
     .messages({
       "any.required": message.fieldRequired("email"),
       "string.pattern.base": message.emailInvalid,
-    }).custom(isUniqueEmail),
+    }),
   password: Joi.string()
     .min(8)
     .max(64)
