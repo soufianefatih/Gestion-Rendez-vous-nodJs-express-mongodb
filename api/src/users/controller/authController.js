@@ -60,6 +60,7 @@ exports.register = asyncHandler(async (req, res) => {
   
       res.status(201).json(result);
     } catch (error) {
+      console.error('Registration error:', error); // Log the error
       if (error.status === 409) {
         return res.status(409).json({ message: error.message });
       } else {
@@ -67,6 +68,7 @@ exports.register = asyncHandler(async (req, res) => {
       }
     }
   });
+  
   
 
 
