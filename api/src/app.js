@@ -8,6 +8,9 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const AppError = require('./utils/HttpError');
+const handleGlobalErrors = require('./utils/ErrorMiddleware');
+
 
   //* Require Routes
 const authRoutes = require("./users/routes/userRoute");
@@ -24,6 +27,9 @@ app.use("/api/users/", authRoutes);
 app.use((req, res,err) => {
   res.status(404).json({ message: "Root Not Found" });
 });
+
+// Global error handling middleware (should be the last middleware)
+app.use(handleGlobalErrors);
 
 //* global error handler
 app.use((err, req, res, next) => {
