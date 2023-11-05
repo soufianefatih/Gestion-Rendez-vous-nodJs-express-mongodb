@@ -39,30 +39,36 @@ exports.registera = asyncHandler(async (req, res) => {
  
 });
 
-exports.register = async (req, res) => {
-      const { value, error } = registerSchema.validate(req.body, {
-        abortEarly: false,
-      });
-  
-      console.log('value', { value, error });
-  
-      if (error) {
-        const err = new AppError('Validation error', 400);
-        return next(err)
-      }
-  
-      const { name, email, password } = value || {}; // Add this line to handle undefined value
-  
-      const result = await User.create({
-        name,
-        email,
-        password,
-      });
-  
-      res.status(201).json(result);
-   
-  };
-  
+exports.register = async (req, res, next) => {
+  const { value, error } = registerSchema.validate(req.body, {
+    abortEarly: false,
+  });
+
+  if (error) {
+    // Extract error details for better handling
+    const errorMessage = error.details.map((detail) => detail.message).join(', ');
+    const err = new AppError(`Validation error: ${errorMessage}`, 400);
+    return next(err);
+  }
+
+  const { name, email, password } = value || {};
+
+  try {
+    const result = await User.create({
+      name,
+      email,
+      password,
+    });
+
+    res.status(201).json(result);
+  } catch (err) {
+    // Handle other errors
+    console.error(err);
+    const internalError = new AppError('Internal Server Error', 500);
+    return next(internalError);
+  }
+};
+
   
 
 
