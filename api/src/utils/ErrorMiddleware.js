@@ -1,5 +1,4 @@
 // middleware/errorMiddleware.js
-const AppError = require('./HttpError');
 
 // const handleGlobalErrors = (err, req, res, next) => {
 //   err.statusCode = err.statusCode || 500;

@@ -49,8 +49,9 @@ exports.register = async (req, res, next) => {
   console.log('Validation result:', { value, error }); // Add this line for debugging
 
   if (error) {
-    const err = new AppError('Validation error', 400);
-    return next(err);
+    const errorMessage = error.details.map((detail) => detail.message).join(', ');
+    const validationError = new AppError(`Validation error: ${errorMessage}`, 400);
+    return next(validationError);
   }
 
   const { name, email, password } = value || {};
