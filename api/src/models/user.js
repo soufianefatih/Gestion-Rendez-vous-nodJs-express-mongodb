@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const {
+  handleMongooseError,
   signToken,
   comparePassword,
   hashPassword,
@@ -32,6 +33,7 @@ userSchema.methods.signToken = signToken;
 
 userSchema.pre("save", hashPassword);
 
+userSchema.post("save", handleMongooseError);
 
 const User = model("user", userSchema);
 
