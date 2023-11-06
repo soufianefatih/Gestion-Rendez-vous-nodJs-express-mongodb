@@ -1,4 +1,9 @@
 const { Schema, model } = require("mongoose");
+const {
+  signToken,
+  comparePassword,
+  hashPassword,
+} = require("../users/helper");
 
 
 const userSchema = new Schema(
