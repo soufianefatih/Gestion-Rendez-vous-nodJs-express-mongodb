@@ -21,6 +21,11 @@ const userSchema = new Schema(
 );
 
 
+userSchema.methods.comparePassword = comparePassword;
+
+userSchema.methods.signToken = signToken;
+
+userSchema.pre("save", hashPassword);
 
 
 const User = model("user", userSchema);
