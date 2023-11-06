@@ -1,27 +1,24 @@
 const User = require('../../models'); // Replace with the correct path to your User model
 
+
 const checkUserExistence = async (req, res, next) => {
+  const { email } = req.body;
+
   try {
-    const {email } = req.body; // Assuming you are checking by ID and email from request parameters
+    const existingUser = await User.findOne({ email });
 
-    // Check if user with the given ID or email exists
-    const user = await User.findOne(email );
-
-    if (!user) {
-      // If user does not exist, return a 404 Not Found response
-      return res.status(404).json({ message: 'User not found' });
+    if (existingUser) {
+      return res.status(409).json({ message: "User with this email already exists" });
     }
 
-    // Attach the user object to the request for later use in the route handlers
-    // req.foundUser = user;
-
-    // Continue to the next middleware or route handler
+    // If the user doesn't exist, proceed to the next middleware or route handler
     next();
   } catch (error) {
-    console.error(error);
-    // Handle other errors if needed
-    return res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error checking existing user:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
+
 
 module.exports = checkUserExistence;
