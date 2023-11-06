@@ -1,5 +1,5 @@
 const express = require("express");
-const {virifylogin} = require("../middleware");
+const checkUserExistence= require("../validator/checkUserExistence");
 const authController = require('../controller/authController')
 
 const routerUser = express.Router();
@@ -10,7 +10,7 @@ const routerUser = express.Router();
 
 routerUser 
 
-    .post("/register", authController.register)
+    .post("/register", checkUserExistence, authController.register)
 
 
 

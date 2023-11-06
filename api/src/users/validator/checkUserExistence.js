@@ -2,10 +2,10 @@ const User = require('../../models'); // Replace with the correct path to your U
 
 const checkUserExistence = async (req, res, next) => {
   try {
-    const { id, email } = req.params; // Assuming you are checking by ID and email from request parameters
+    const {email } = req.body; // Assuming you are checking by ID and email from request parameters
 
     // Check if user with the given ID or email exists
-    const user = await User.findOne({ $or: [{ _id: id }, { email }] });
+    const user = await User.findOne(email );
 
     if (!user) {
       // If user does not exist, return a 404 Not Found response
@@ -13,7 +13,7 @@ const checkUserExistence = async (req, res, next) => {
     }
 
     // Attach the user object to the request for later use in the route handlers
-    req.foundUser = user;
+    // req.foundUser = user;
 
     // Continue to the next middleware or route handler
     next();
