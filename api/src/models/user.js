@@ -6,7 +6,6 @@ const {
   hashPassword,
 } = require("../users/helper");
 
-
 const userSchema = new Schema(
   {
     name: {
@@ -21,11 +20,13 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-    }
+    },
+    role: {
+      type: String
+    },
   },
   { versionKey: false, timestamps: true }
 );
-
 
 userSchema.methods.comparePassword = comparePassword;
 
