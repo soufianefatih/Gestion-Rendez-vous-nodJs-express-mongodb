@@ -60,12 +60,23 @@ exports.update = async (req, res, next) => {
   const result = await Rdv.findOneAndUpdate(
     { _id, confirm }, // Specify the query conditions here
     { fullName, number, date }, // Specify the fields to update
-    { new: true, select: "fullName number date" } // Options
+    { new: true, select: "fullName number date confirm" } // Options
   );
 
   res.status(201).json({ status: HttpStatusText.SUCCESS, data: { result } });
 };
 
+// * get one rendez-vous ById
+exports.findOneById = async (req, res,next) => {
+
+  const result = await Rdv.findById(_id);
+  if(!result) {
+    const err = new AppError('not found rdv', 404);
+    return next(err);
+  }
+
+  res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
+};
 
 
 

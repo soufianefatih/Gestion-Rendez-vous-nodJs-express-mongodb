@@ -5,7 +5,7 @@ const AppError = require('../../utils/HttpError');
 const checkRdvExistence = async (req, res, next) => {
 
   try {
-    const existingUser = await Rdv.findOne();
+    const existingUser = await Rdv.findById();
 
     if (!existingUser) {
         const err = new AppError('rdv not exist', 409);

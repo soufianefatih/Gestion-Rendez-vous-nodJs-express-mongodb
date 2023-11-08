@@ -1,5 +1,5 @@
 const express = require("express");
-// const checkEmailExistence= require("../validator/checkEmailExistence");
+const checkRdvExistence= require("../validator/checkRdvExistence");
 const rdvController = require('../controller/rdvController')
 const{virifylogin}= require('../../middleware')
 
@@ -17,10 +17,11 @@ route
 
 route 
     .route('/update')
-    .put( virifylogin,rdvController.update)    
+    .put( virifylogin,checkRdvExistence,rdvController.update)    
 
-
-
+route 
+    .route('/find')
+    .get( virifylogin,checkRdvExistence,rdvController.findOneById)  
 
 
 
