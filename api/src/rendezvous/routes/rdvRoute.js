@@ -1,6 +1,6 @@
 const express = require("express");
-const checkEmailExistence= require("../validator/checkEmailExistence");
-const authController = require('../controller/authController')
+// const checkEmailExistence= require("../validator/checkEmailExistence");
+const rdvController = require('../controller/rdvController')
 
 const routerUser = express.Router();
 
@@ -9,12 +9,9 @@ const routerUser = express.Router();
 
 
 routerUser 
-    .route('/register')
-    .post(checkEmailExistence, authController.register)
+    .route('/create')
+    .post(rdvController.create)
 
-    routerUser     
-    .route('/login')
-    .post(authController.login)
 
 
 
