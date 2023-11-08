@@ -5,7 +5,7 @@ const createSchema = Joi.object({
   fullName: Joi.string()
       .required(),
   
-  phone: Joi.string()
+  number: Joi.number()
       .required(),
 
   date: Joi.date()

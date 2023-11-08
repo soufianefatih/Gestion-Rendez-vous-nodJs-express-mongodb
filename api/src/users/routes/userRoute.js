@@ -2,17 +2,17 @@ const express = require("express");
 const checkEmailExistence= require("../validator/checkEmailExistence");
 const authController = require('../controller/authController')
 
-const routerUser = express.Router();
+const route = express.Router();
 
 
 
 
 
-routerUser 
+route
     .route('/register')
     .post(checkEmailExistence, authController.register)
 
-    routerUser     
+route     
     .route('/login')
     .post(authController.login)
 
@@ -22,4 +22,4 @@ routerUser
 
 
 
-module.exports = routerUser;
+module.exports = route;

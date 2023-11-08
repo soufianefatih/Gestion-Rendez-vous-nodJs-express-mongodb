@@ -9,7 +9,7 @@ const virifylogin =  function (req, res, next) {
     if (err) {
       res.json({ success: false, message: "Failed to authenticate token " });
     } else {
-      req.user = user;
+      req.user = { _id: user.id };
       next();
     }
   });

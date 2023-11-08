@@ -1,4 +1,5 @@
 const { Schema, model,mongoose } = require("mongoose");
+const {handleMongooseError} = require("../users/helpers");
 
 
 const rdvSchema = new Schema(
@@ -6,8 +7,8 @@ const rdvSchema = new Schema(
     fullName: {
       type: String,
     },
-    phone: {
-      type:String,
+    number: {
+      type:Number,
       required: [true, "Number is required"],
     },
     date: { 
@@ -16,7 +17,7 @@ const rdvSchema = new Schema(
     },
     confirm: { type: Boolean, required: true },
 
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
      }, 
@@ -25,6 +26,7 @@ const rdvSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
+rdvSchema.post("save", handleMongooseError);
 
 const Rdv = model("rdv", rdvSchema );
 

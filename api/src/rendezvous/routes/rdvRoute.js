@@ -4,16 +4,16 @@ const rdvController = require('../controller/rdvController')
 const{virifylogin}= require('../../middleware')
 
 
-const routerUser = express.Router();
+const route = express.Router();
 
 
-
-
-
-routerUser 
+route 
     .route('/create')
     .post( virifylogin,rdvController.create)
 
+route 
+    .route('/all')
+    .get( virifylogin,rdvController.all)    
 
 
 
@@ -21,4 +21,5 @@ routerUser
 
 
 
-module.exports = routerUser;
+
+module.exports = route;

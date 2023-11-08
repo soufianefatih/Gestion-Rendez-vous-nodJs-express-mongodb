@@ -23,7 +23,6 @@ const handleGlobalErrors = require('./middleware/ErrorMiddleware');
 
 //* Require Routes
 const authRoutes = require("./users/routes/userRoute");
-
 const rdvRoutes = require("./rendezvous/routes/rdvRoute");
 
 //* Register Our Routes

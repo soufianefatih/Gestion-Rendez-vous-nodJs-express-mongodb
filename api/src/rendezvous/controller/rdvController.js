@@ -8,7 +8,6 @@ const HttpStatusText = require('../../utils/HttpStatusText');
 
 // * create  new rdv
 exports.create = async (req, res, next) => {
-  console.log('Request body:', req.body); // Add this line for debugging
 
   const { value, error } = createSchema.validate(req.body, {
     abortEarly: false,
@@ -18,21 +17,31 @@ exports.create = async (req, res, next) => {
     return next(err);
   }
 
-  const { fullName, phone, date} = value || {};
-
-   // Set the confirm  based on the condition (data.type)
-  //  const data = req.body
-   const confirm = false;
-  
-  const { _id } = req.user;
-  console.log('id',_id);
+  const { fullName, number, date} = value || {};
+  const confirm = false;
+  const user = req.user;
   
   const result = await Rdv.create({
-    fullName, phone, date,confirm,userId:_id
+    fullName,number, date,confirm,user
   });
 
   res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
 };
+
+
+
+// * get all rendez-vous
+exports.all = async (req, res,next) => {
+
+  const result = await Rdv.find();
+  if(!result) {
+    const err = new AppError('not found rdv', 404);
+    return next(err);
+  }
+
+  res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
+};
+
 
 
 
