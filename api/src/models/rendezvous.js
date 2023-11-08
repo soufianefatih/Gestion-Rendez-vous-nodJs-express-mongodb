@@ -12,9 +12,16 @@ const rdvSchema = new Schema(
       unique: true,
     },
     date: { 
-     type: Number, required: true 
+     type: Date, required: true 
     },
     confirm: { type: Boolean, required: true },
+
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User'
+     }, 
+    
   },
   { versionKey: false, timestamps: true }
 );
