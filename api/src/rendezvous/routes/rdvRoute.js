@@ -23,7 +23,9 @@ route
     .route('/find')
     .get( virifylogin,checkRdvExistence,rdvController.findOneById)  
 
-
+    route 
+    .route('/list')
+    .get( virifylogin,rdvController.list)  
 
 
 module.exports = route;
