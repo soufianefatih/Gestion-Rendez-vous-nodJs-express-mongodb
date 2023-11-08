@@ -15,6 +15,9 @@ route
     .route('/all')
     .get( virifylogin,rdvController.all)    
 
+route 
+    .route('/update')
+    .put( virifylogin,rdvController.update)    
 
 
 

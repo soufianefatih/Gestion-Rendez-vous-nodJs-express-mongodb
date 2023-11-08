@@ -45,24 +45,27 @@ exports.all = async (req, res,next) => {
 
 // * update rendez-vous
 exports.update = async (req, res, next) => {
-
   const { value, error } = updateSchema.validate(req.body, {
     abortEarly: false,
   });
+
   if (error) {
     const err = new AppError(error, 404);
     return next(err);
   }
 
-  const { fullName= newName, number= newNumber, date =newDate} = value || {};
+  const { _id, fullName = newName, number = newNumber, date = newDate } = value || {};
   const confirm = false;
-  
-  const result = await Rdv.findOneAndUpdate({
-    fullName,number, date,confirm
-  });
 
-  res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
+  const result = await Rdv.findOneAndUpdate(
+    { _id, confirm }, // Specify the query conditions here
+    { fullName, number, date }, // Specify the fields to update
+    { new: true, select: "fullName number date" } // Options
+  );
+
+  res.status(201).json({ status: HttpStatusText.SUCCESS, data: { result } });
 };
+
 
 
 

@@ -2,6 +2,7 @@ const Joi = require("joi");
 
   
 const updateSchema = Joi.object({
+  _id: Joi.string(),
   fullName: Joi.string()
       .required(),
   
