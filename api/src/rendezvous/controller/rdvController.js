@@ -68,7 +68,8 @@ exports.update = async (req, res, next) => {
 
 // * get one rendez-vous ById
 exports.findOneById = async (req, res,next) => {
-
+  const { _id } = req.body;
+  console.log(_id);
   const result = await Rdv.findById(_id);
   if(!result) {
     const err = new AppError('not found rdv', 404);
