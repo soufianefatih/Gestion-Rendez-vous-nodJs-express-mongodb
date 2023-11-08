@@ -9,8 +9,13 @@ const routerUser = express.Router();
 
 
 routerUser 
+    .route('/register')
+    .post(checkEmailExistence, authController.register)
 
-    .post("/register", checkEmailExistence, authController.register)
+    routerUser     
+    .route('/login')
+    .post(authController.login)
+
 
 
 

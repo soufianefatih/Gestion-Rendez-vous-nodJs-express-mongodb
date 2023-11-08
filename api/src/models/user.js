@@ -4,7 +4,7 @@ const {
   signToken,
   comparePassword,
   hashPassword,
-} = require("../users/helper");
+} = require("../users/helpers");
 
 const userSchema = new Schema(
   {

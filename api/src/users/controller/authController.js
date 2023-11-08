@@ -1,43 +1,11 @@
 const { User } = require("../../models");
-const { registerSchema} = require("../schema");
-const asyncHandler = require('express-async-handler')
+const { registerSchema,loginSchema} = require("../schema");
 const AppError = require('../../utils/HttpError');
+const HttpStatusText = require('../../utils/HttpStatusText');
 
 
 
-exports.registera = asyncHandler(async (req, res) => {
-  try{ 
-  const { value, error } =  registerSchema.validate(req.body, {
-    abortEarly: false,
-  });
-  
-  console.log('value',{ value, error });
 
-  const { name, email, password} = value;
-  
-      if (error) {
-        return res.status(400).json({ message: "Validation error", errors: error.details });      // throw  BadRequestError(error )
-      }   
-  
-  
-    const result = await User.create({
-      name,
-      email,
-      password,
-    });
-  
-      res.status(201).json(result);
-
-  }catch (error) {
-    if (error.status === 409) {
-      return res.status(409).json({ message: error.message});
-
-    } else {
-      return res.status(500).json({ message: "Internal Server Error", error: error.message });
-    }
-  }
- 
-});
 
 exports.register = async (req, res, next) => {
   console.log('Request body:', req.body); // Add this line for debugging
@@ -55,14 +23,58 @@ exports.register = async (req, res, next) => {
   }
 
   const { name, email, password } = value || {};
+  
+  // Set the role based on the condition (data.type)
+    const data = req.body
+    const role = data.type ? 'admin' : 'user';
+
 
   const result = await User.create({
     name,
     email,
     password,
+    role
   });
 
-  res.status(201).json(result);
+  res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
+};
+
+
+
+exports.login = async (req, res, next) => {
+  const { value, error } = loginSchema.validate(req.body, {
+    abortEarly: false,
+  });
+
+  if (error) {
+    const err = new AppError(error, 404);
+    return next(err);
+  }
+
+  const { email, password } = value;
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    const err = new AppError('Email is wrong', 401);
+    return next(err);
+  }
+
+  if (!user.comparePassword || !user.comparePassword(password)) {
+    const err = new AppError('Password is wrong', 401);
+    return next(err);
+  }
+
+  const accessToken = user.signToken();
+
+  await User.findOneAndUpdate({ email }, { accessToken });
+  res.json({
+    status: HttpStatusText.SUCCESS,
+    accessToken,
+    user: {
+      name: user.name,
+      email: user.email,
+    },
+  });
 };
 
   
