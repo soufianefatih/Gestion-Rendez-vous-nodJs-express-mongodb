@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model,mongoose } = require("mongoose");
 
 
 const rdvSchema = new Schema(
@@ -7,18 +7,17 @@ const rdvSchema = new Schema(
       type: String,
     },
     phone: {
-      type: Number,
+      type:String,
       required: [true, "Number is required"],
-      unique: true,
     },
     date: { 
-     type: Date, required: true 
+     type: Date, required: true
+
     },
     confirm: { type: Boolean, required: true },
 
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: 'User'
      }, 
     
@@ -27,6 +26,6 @@ const rdvSchema = new Schema(
 );
 
 
-const Rdv = model("Rdv", rdvSchema );
+const Rdv = model("rdv", rdvSchema );
 
 module.exports = Rdv;

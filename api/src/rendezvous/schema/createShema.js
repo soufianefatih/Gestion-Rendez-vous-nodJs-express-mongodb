@@ -5,14 +5,13 @@ const createSchema = Joi.object({
   fullName: Joi.string()
       .required(),
   
-  phone: Joi.number()
+  phone: Joi.string()
       .required(),
 
   date: Joi.date()
       .required(),
 
   confirm: Joi.boolean()
-      .required(),
 
   });
 
