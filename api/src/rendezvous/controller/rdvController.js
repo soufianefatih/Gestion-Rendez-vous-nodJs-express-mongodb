@@ -1,5 +1,5 @@
 const { Rdv} = require("../../models");
-const { createSchema} = require("../schema");
+const { createSchema,updateSchema} = require("../schema");
 const AppError = require('../../utils/HttpError');
 const HttpStatusText = require('../../utils/HttpStatusText');
 
@@ -43,6 +43,26 @@ exports.all = async (req, res,next) => {
 };
 
 
+// * update rendez-vous
+exports.update = async (req, res, next) => {
+
+  const { value, error } = updateSchema.validate(req.body, {
+    abortEarly: false,
+  });
+  if (error) {
+    const err = new AppError(error, 404);
+    return next(err);
+  }
+
+  const { fullName= newName, number= newNumber, date =newDate} = value || {};
+  const confirm = false;
+  
+  const result = await Rdv.findOneAndUpdate({
+    fullName,number, date,confirm
+  });
+
+  res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
+};
 
 
 
