@@ -9,6 +9,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const AppError = require('./utils/HttpError');
 const handleGlobalErrors = require('./middleware/ErrorMiddleware');
+// const{ virifylogin} = require('./middleware');
+
 
 
 
@@ -21,6 +23,7 @@ const handleGlobalErrors = require('./middleware/ErrorMiddleware');
 
 //* Require Routes
 const authRoutes = require("./users/routes/userRoute");
+
 const rdvRoutes = require("./rendezvous/routes/rdvRoute");
 
 //* Register Our Routes
