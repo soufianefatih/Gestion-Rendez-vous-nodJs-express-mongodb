@@ -93,8 +93,9 @@ exports.list = async (req, res,next) => {
 
 // * delete rendez-vous ById
 exports.delete = async (req, res,next) => {
-  const _id = req.body
-  const result = await Rdv.findByIdAndRemove({_id});
+  const {_id} = req.body
+  console.log("Deleting rdv with _id:", _id);
+  const result = await Rdv.findByIdAndDelete(_id);
   if(!result) {
     const err = new AppError('not found rdv', 404);
     return next(err);

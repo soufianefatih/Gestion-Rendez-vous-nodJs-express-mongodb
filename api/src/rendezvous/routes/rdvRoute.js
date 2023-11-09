@@ -29,7 +29,7 @@ route
   
 route 
     .route('/delete')
-    .delete( virifylogin,checkRdvExistence,rdvController.delete) 
+    .delete( virifylogin,rdvController.delete) 
 
  
 
