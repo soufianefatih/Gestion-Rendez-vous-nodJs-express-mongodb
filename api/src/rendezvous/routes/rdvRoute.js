@@ -8,6 +8,10 @@ const route = express.Router();
 
 
 route 
+    .route('/list')
+    .get( virifylogin,rdvController.list) 
+
+route 
     .route('/create')
     .post( virifylogin,rdvController.create)
 
@@ -21,11 +25,10 @@ route
 
 route 
     .route('/find')
-    .get( virifylogin,checkRdvExistence,rdvController.findOneById)  
+    .get( virifylogin,checkRdvExistence,rdvController.findOneById) 
 
-    route 
-    .route('/list')
-    .get( virifylogin,rdvController.list)  
+
+ 
 
 
 module.exports = route;
