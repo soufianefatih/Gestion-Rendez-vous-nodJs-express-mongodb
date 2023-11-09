@@ -1,9 +1,9 @@
-const userRole = require("./roleAuthorized");
 const isAuthorized = require("./isAuthorized");
 const virifylogin = require("./virifyLogin")
+const userRole = require("./roleAuthorized");
 
 module.exports = {
   isAuthorized,
-  userRole,
-  virifylogin
+  virifylogin,
+   userRole
 };
