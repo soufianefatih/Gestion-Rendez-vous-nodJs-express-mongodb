@@ -107,24 +107,22 @@ exports.delete = async (req, res,next) => {
 
 // * change status confirm rendez-vous
 exports.confirm = async (req, res, next) => {
-  const { value, error } = updateSchema.validate(req.body, {
-    abortEarly: false,
-  });
-
-  if (error) {
-    const err = new AppError(error, 404);
+  const { _id } = req.body;
+  const confirm = true;
+  
+  const result = await Rdv.findOneAndUpdate(
+    { _id },
+    { confirm },
+    { new: true, select: "fullName number date confirm" }
+  );
+  
+  if (!result) {
+    const err = new AppError('Error: Data not found', 404);
     return next(err);
   }
-
-  const {_id} = value || {};
-  const confirm = true;
-
-  const result = await Rdv.findOneAndUpdate(
-    { _id, confirm }, // Specify the query conditions here
-    { new: true, select: "fullName number date confirm" } // Options
-  );
-
+  
   res.status(201).json({ status: HttpStatusText.SUCCESS, data: { result } });
+  
 };
 
 
