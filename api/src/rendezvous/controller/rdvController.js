@@ -81,7 +81,7 @@ exports.findOneById = async (req, res,next) => {
 // * get all rendez-vous ById
 exports.list = async (req, res,next) => {
   const user = req.user
-  const result = await Rdv.find({_id});
+  const result = await Rdv.find({user});
   if(!result) {
     const err = new AppError('not found rdv', 404);
     return next(err);
@@ -89,6 +89,20 @@ exports.list = async (req, res,next) => {
 
   res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
 };
+
+
+// * delete rendez-vous ById
+exports.delete = async (req, res,next) => {
+  const _id = req.body
+  const result = await Rdv.findByIdAndRemove({_id});
+  if(!result) {
+    const err = new AppError('not found rdv', 404);
+    return next(err);
+  }
+
+  res.status(201).json({ status : HttpStatusText.SUCCESS, data: null });
+};
+
 
 
 

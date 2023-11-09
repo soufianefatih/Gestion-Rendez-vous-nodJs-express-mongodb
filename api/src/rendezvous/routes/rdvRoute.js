@@ -26,7 +26,10 @@ route
 route 
     .route('/find')
     .get( virifylogin,checkRdvExistence,rdvController.findOneById) 
-
+  
+route 
+    .route('/delete')
+    .delete( virifylogin,checkRdvExistence,rdvController.delete) 
 
  
 
