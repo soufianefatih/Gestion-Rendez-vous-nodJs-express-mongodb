@@ -1,7 +1,7 @@
 const express = require("express");
 const checkRdvExistence= require("../validator/checkRdvExistence");
 const rdvController = require('../controller/rdvController')
-const{virifylogin}= require('../../middleware')
+const{virifylogin,userRole}= require('../../middleware')
 
 
 const route = express.Router();
