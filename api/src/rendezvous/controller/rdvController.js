@@ -105,6 +105,30 @@ exports.delete = async (req, res,next) => {
 };
 
 
+// * change status confirm rendez-vous
+exports.confirm = async (req, res, next) => {
+  const { value, error } = updateSchema.validate(req.body, {
+    abortEarly: false,
+  });
+
+  if (error) {
+    const err = new AppError(error, 404);
+    return next(err);
+  }
+
+  const {_id} = value || {};
+  const confirm = true;
+
+  const result = await Rdv.findOneAndUpdate(
+    { _id, confirm }, // Specify the query conditions here
+    { fullName, number, date }, // Specify the fields to update
+    { new: true, select: "fullName number date confirm" } // Options
+  );
+
+  res.status(201).json({ status: HttpStatusText.SUCCESS, data: { result } });
+};
+
+
 
 
 
