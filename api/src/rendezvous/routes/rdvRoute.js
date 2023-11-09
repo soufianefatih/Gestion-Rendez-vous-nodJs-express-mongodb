@@ -31,6 +31,9 @@ route
     .route('/delete')
     .delete( virifylogin,rdvController.delete) 
 
+ route 
+    .route('/confirm')
+    .put( virifylogin,userRole(["admin"]),checkRdvExistence,rdvController.confirm)  
  
 
 

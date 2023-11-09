@@ -121,7 +121,6 @@ exports.confirm = async (req, res, next) => {
 
   const result = await Rdv.findOneAndUpdate(
     { _id, confirm }, // Specify the query conditions here
-    { fullName, number, date }, // Specify the fields to update
     { new: true, select: "fullName number date confirm" } // Options
   );
 
