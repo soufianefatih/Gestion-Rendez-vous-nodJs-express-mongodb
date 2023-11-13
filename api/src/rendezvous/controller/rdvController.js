@@ -17,11 +17,11 @@ exports.create = async (req, res, next) => {
     return next(err);
   }
 
-  const { fullName, number, date} = value || {};
+  const { fullName, number, date,confirm} = value || {};
   const user = req.user;
   
   const result = await Rdv.create({
-    fullName,number, date,user
+    fullName,number, date,user,confirm
   });
 
   res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
