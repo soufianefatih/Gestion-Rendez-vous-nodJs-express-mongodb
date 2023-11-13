@@ -17,11 +17,12 @@ exports.create = async (req, res, next) => {
     return next(err);
   }
 
-  const { fullName, number, date,confirm} = value || {};
+  const { fullName, number, date} = value || {};
+  const confirm = false;
   const user = req.user;
   
   const result = await Rdv.create({
-    fullName,number, date,user,confirm
+    fullName,number, date,confirm,user
   });
 
   res.status(201).json({ status : HttpStatusText.SUCCESS, data: {result} });
@@ -53,9 +54,10 @@ exports.update = async (req, res, next) => {
   }
 
   const { _id, fullName = newName, number = newNumber, date = newDate } = value || {};
+  const confirm = false;
 
   const result = await Rdv.findOneAndUpdate(
-    { _id}, // Specify the query conditions here
+    { _id, confirm }, // Specify the query conditions here
     { fullName, number, date }, // Specify the fields to update
     { new: true, select: "fullName number date confirm" } // Options
   );
