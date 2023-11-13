@@ -15,7 +15,7 @@ const rdvSchema = new Schema(
      type: Date, required: true
 
     },
-    confirm: { type: Boolean, required: true },
+    confirm: { type: Boolean, defaulf : false},
 
     user: {
       type: mongoose.Schema.Types.ObjectId,
