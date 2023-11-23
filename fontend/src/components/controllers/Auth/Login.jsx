@@ -31,8 +31,6 @@ const Login = () => {
         window.localStorage.setItem("name", response.data.user.name);
         window.localStorage.setItem("email", response.data.user.email);
         window.localStorage.setItem("role", response.data.user.role);
-        window.localStorage.setItem("status", response.data.user.status);
-
         window.localStorage.setItem("login", 1);
         window.location = "/dashboard/user";
       })()

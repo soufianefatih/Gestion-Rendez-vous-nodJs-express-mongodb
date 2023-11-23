@@ -9,10 +9,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const AppError = require('./utils/HttpError');
 const handleGlobalErrors = require('./middleware/ErrorMiddleware');
+const cors = require('cors')
 // const{ virifylogin} = require('./middleware');
 
 
 
+app.use(cors())
 
  //* the will let us get data the data form post
  app.use(express.json());

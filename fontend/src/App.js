@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './components/controllers/Auth/Login';
 import Register from './components/controllers/Auth/Register';
-import { checkIfNotLoginBeforeRenderComponent} from './middleware/authMiddleware'
+import { checkIfNotLoginBeforeRenderComponent, checkLoginBeforeRenderComponent} from './middleware/authMiddleware'
+import Path from './components/controllers/path/path';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       <Routes>
       <Route path="/" element={checkIfNotLoginBeforeRenderComponent(<Login />)} />
       <Route path="/register" element={checkIfNotLoginBeforeRenderComponent(<Register />)} />
+      <Route path="/path" element={checkLoginBeforeRenderComponent(<Path/>)} />
+
+
 
       </Routes>
       </Router>
