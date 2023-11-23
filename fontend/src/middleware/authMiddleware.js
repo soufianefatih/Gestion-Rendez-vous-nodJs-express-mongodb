@@ -6,7 +6,7 @@ export function isLogin() {
 }
 
 
-export function checkLoginBeforeRenderComponent(component, ifNotLoginRedirectToUrl = "/login") {
+export function checkLoginBeforeRenderComponent(component, ifNotLoginRedirectToUrl = "/") {
     let login = window.localStorage.getItem("login") ?? 0;
     let status = window.localStorage.getItem("status");
 
