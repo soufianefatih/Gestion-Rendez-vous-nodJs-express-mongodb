@@ -1,9 +1,9 @@
 import axios from 'axios';
-const APP_URL = "http://localhost:5500/api/location/";
+const APP_URL = "http://localhost:5500/api/users/";
 
 axios.defaults.headers = {
     'Content-Type': 'application/json',
-    "auth-token": window.localStorage.getItem("token") ?? ''
+    "Authorization": window.localStorage.getItem("token") ?? ''
 }
 
 export function login(data) {
