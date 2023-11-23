@@ -8,9 +8,8 @@ export function isLogin() {
 
 export function checkLoginBeforeRenderComponent(component, ifNotLoginRedirectToUrl = "/") {
     let login = window.localStorage.getItem("login") ?? 0;
-    let status = window.localStorage.getItem("status");
 
-    if (login == 1 && status == 1) {
+    if (login === 1) {
         return component;
     } else {
         return <Navigate to={ifNotLoginRedirectToUrl} />
