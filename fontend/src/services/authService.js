@@ -1,5 +1,5 @@
 import axios from 'axios';
-const APP_URL = "http://localhost:5500/api/users/";
+const APP_URL = "http://localhost:5000/api/users/";
 
 axios.defaults.headers = {
     'Content-Type': 'application/json',

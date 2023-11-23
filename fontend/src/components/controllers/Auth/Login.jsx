@@ -32,7 +32,7 @@ const Login = () => {
         window.localStorage.setItem("email", response.data.user.email);
         window.localStorage.setItem("role", response.data.user.role);
         window.localStorage.setItem("login", 1);
-        window.location = "/dashboard/user";
+        window.location = "/path";
       })()
     }).catch((err) => console.log('err',err.response));
     setSubmitted(true);
