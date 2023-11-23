@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from './../../../src/components/layouts/navbar';
-import Siderbar from './../../../src/components/layouts/siderbar';
-import Cards from './../../../src/components/layouts/cards';
-import Tabls from './../../../src/components/layouts/table';
-import Header from './../../../src/components/layouts/header';
-import CardDash from './../../../src/components/layouts/carddash';
-import Forms from './../../../src/components/layouts/forms';
-import ModelCards  from './../../../src/components/layouts/modalcard';
+import Navbar from '../layouts/navbar';
+import Siderbar from '../layouts/siderbar';
+import Cards from '../layouts/cards';
+import Tabls from '../layouts/table';
+import Header from '../layouts/header';
+import CardDash from '../layouts/carddash';
+import Forms from '../layouts/forms';
+import ModelCards  from '../layouts/modalcard';
 
 
 
