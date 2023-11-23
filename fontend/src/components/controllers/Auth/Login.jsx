@@ -26,7 +26,7 @@ const Login = () => {
       (async () => {
         
         console.log(response.data.user)
-        window.localStorage.setItem("token", response.data.token);
+        window.localStorage.setItem("token", response.data.accessToken);
         window.localStorage.setItem("id", response.data.user.id);
         window.localStorage.setItem("name", response.data.user.name);
         window.localStorage.setItem("email", response.data.user.email);
