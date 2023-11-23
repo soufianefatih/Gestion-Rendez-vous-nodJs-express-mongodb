@@ -20,7 +20,7 @@ export function checkLoginBeforeRenderComponent(component, ifNotLoginRedirectToU
 export function checkIfNotLoginBeforeRenderComponent(component, ifNotLoginRedirectToUrl = "/") {
     let login = window.localStorage.getItem("login") ?? 0;
 
-    if (login == 0) {
+    if (login === 0) {
         return component;
     } else {
         return <Navigate to={ifNotLoginRedirectToUrl} />
