@@ -1,4 +1,4 @@
-import { register} from './../../../services/AuthService';
+import { register} from '../../../services/AuthService';
 import "./auth.css";
 import React, { useState } from "react";
 

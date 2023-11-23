@@ -1,6 +1,6 @@
 import React,{useState}from 'react';
 import "./auth.css";
-import {login} from './../../../services/AuthService';
+import {login} from '../../../services/AuthService';
 
 
 
