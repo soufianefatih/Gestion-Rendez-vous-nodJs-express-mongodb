@@ -9,7 +9,7 @@ const authReducer = (state = initialState, action) => {
     case 'LOGIN_SUCCESS':
       const { user } = action.payload;
 
-      if (user) {
+      if (user && user.accessToken) {
         // Check if accessToken is present in user object
         const accessToken = user.accessToken || null;
 
