@@ -3,6 +3,7 @@ import "./auth.css";
 import {login} from '../../../services/AuthService';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../../redux/action/action';
+const lock = new Lock();
 
 
 
