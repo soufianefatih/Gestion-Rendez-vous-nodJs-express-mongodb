@@ -35,6 +35,23 @@ const dispatch = useDispatch();
       .catch((err) => console.error('Error:', err.response || err));
   };
   
+  const handleSubmit = async () => {
+    const response = await login(data);
+    console.log('Response:', response.data);
+  
+    // Acquire the lock to ensure that only one thread can modify the state object at a time.
+    lock.acquire();
+  
+    try {
+      // Dispatch the loginSuccess action with the received user data.
+      dispatch(loginSuccess(response.data));
+    } finally {
+      // Release the lock.
+      lock.release();
+    }
+  
+    // rest of your code
+  };
   
 
 
