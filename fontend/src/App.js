@@ -17,7 +17,7 @@ function App() {
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></link>
       <Router>
       <Routes>
-      <Route path="/login" element={checkIfNotLoginBeforeRenderComponent(<Login />)} />
+      <Route path="/login" element={(<Login />)} />
       <Route path="/register" element={checkIfNotLoginBeforeRenderComponent(<Register />)} />
       <Route path="/path" element={checkLoginBeforeRenderComponent(<Path/>)} />
 

@@ -1,10 +1,13 @@
 import React,{useState}from 'react';
 import "./auth.css";
 import {login} from '../../../services/AuthService';
+import { useDispatch } from 'react-redux';
 
 
 
 const Login = () => {
+const dispatch = useDispatch();
+
  const [data , setData] = useState({
   email : "",
   password : ""
@@ -20,25 +23,43 @@ const Login = () => {
     setData({ ...data,password: e.target.value });
   };
 
-  const handleSubmit =()=> {
-    login( data).then((response) => {
+  // const handleSubmit =()=> {
+  //   login( data).then((response) => {
      
-      (async () => {
+  //     (async () => {
         
-        console.log(response.data.user)
-        window.localStorage.setItem("token", response.data.accessToken);
-        window.localStorage.setItem("id", response.data.user.id);
-        window.localStorage.setItem("name", response.data.user.name);
-        window.localStorage.setItem("email", response.data.user.email);
-        window.localStorage.setItem("role", response.data.user.role);
-        window.localStorage.setItem("login", 1);
-        window.location = "/path";
-      })()
-    }).catch((err) => console.log('err',err.response));
-    setSubmitted(true);
-  };
+  //       console.log(response.data.user)
+  //       window.localStorage.setItem("token", response.data.accessToken);
+  //       window.localStorage.setItem("id", response.data.user.id);
+  //       window.localStorage.setItem("name", response.data.user.name);
+  //       window.localStorage.setItem("email", response.data.user.email);
+  //       window.localStorage.setItem("role", response.data.user.role);
+  //       window.localStorage.setItem("login", 1);
+  //       window.location = "/path";
+  //     })()
+  //   }).catch((err) => console.log('err',err.response));
+  //   setSubmitted(true);
+  // };
   
-
+  const handleSubmit = () => {
+    login(data)
+      .then((response) => {
+        console.log(response.data.user);
+        dispatch(login(response.data.user));
+        (async () => {
+        
+                console.log(response.data.user)
+                window.localStorage.setItem("token", response.data.accessToken);
+                window.localStorage.setItem("id", response.data.user.id);
+                window.localStorage.setItem("name", response.data.user.name);
+                window.localStorage.setItem("email", response.data.user.email);
+                window.localStorage.setItem("role", response.data.user.role);
+                window.localStorage.setItem("login", 1);
+                window.location = "/path";
+              })()
+      })
+      .catch((err) => console.log('err', err.response));
+  };
 
 
 

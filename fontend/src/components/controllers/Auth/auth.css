@@ -35,8 +35,8 @@
 .login-fg .form-container p a{color:#616161}
 .login-fg .form-container button:focus{outline:none;outline:0 auto -webkit-focus-ring-color}
 .login-fg .form-container .btn-fg.focus,.btn-fg:focus{box-shadow:none}
-.login-fg .form-container .btn-fg{background:#ec5050;border:none;color:#fff;box-shadow:0 0 5px rgba(0,0,0,0.2)}
-.login-fg .form-container .btn-fg:hover{background:#108ae4}
+.login-fg .form-container .btn-fg{background:#455a64;border:none;color:#fff;box-shadow:0 0 5px rgba(0,0,0,0.2)}
+.login-fg .form-container .btn-fg:hover{background:#ec5050}
 .login-fg .logo a{font-weight:700;color:#e82728;font-size:39px;text-shadow:1px 0px #000 ;text-decoration: none;}
 .login-fg .form-container .checkbox{margin-bottom:25px;font-size:14px}
 .login-fg .form-container .form-check{float:left;margin-bottom:0}
