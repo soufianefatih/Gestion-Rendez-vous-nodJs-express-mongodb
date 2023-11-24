@@ -10,7 +10,7 @@ const authReducer = (state = initialState, action) => {
       const { user, accessToken } = action.payload;
 
       if (user && accessToken) {
-        window.localStorage.setItem("token", accessToken);
+        window.localStorage.setItem("token",accessToken);
         window.localStorage.setItem("id", user.id);
         window.localStorage.setItem("name", user.name);
         window.localStorage.setItem("email", user.email);
