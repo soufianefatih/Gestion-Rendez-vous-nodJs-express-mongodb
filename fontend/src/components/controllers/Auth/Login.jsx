@@ -28,7 +28,7 @@ const dispatch = useDispatch();
     login(data)
       .then((response) => {
         console.log('Response:', response.data);
-        dispatch(loginSuccess(response.data.user));
+        dispatch(loginSuccess(response.data));
         // rest of your code
       })
       .catch((err) => console.error('Error:', err.response || err));
