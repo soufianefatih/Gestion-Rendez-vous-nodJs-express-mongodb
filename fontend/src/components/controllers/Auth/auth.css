@@ -52,7 +52,7 @@
 .login-fg .login-section p{margin:25px 0 0;font-size:15px;color:#616161}
 .login-fg .login-section p a{color:#616161}
 .login-fg .login-section ul{list-style:none;padding:0;margin:0}
-.login-fg .login-section .social li{display:inline-block;margin-bottom:5px}
+.login-fg .login-section .social li{display:inline-block;margin-bottom:5px;margin-right:2px}
 .login-fg .login-section .social li a{font-size:12px;font-weight:600;width:120px;margin:2px 0 3px;height:35px;line-height:35px;border-radius:20px;display:inline-block;text-align:center;text-decoration:none;background:#fff;box-shadow:0 0 5px rgba(0,0,0,0.2)}
 .login-fg .login-section .social li a i{height:35px;width:35px;line-height:35px;float:left;color:#fff;border-radius:20px}
 .login-fg .login-section .social li a span{margin-right:7px}
