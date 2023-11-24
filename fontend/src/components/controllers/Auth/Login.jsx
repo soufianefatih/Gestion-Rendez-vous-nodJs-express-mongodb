@@ -35,7 +35,7 @@ const dispatch = useDispatch();
       .catch((err) => console.error('Error:', err.response || err));
   };
   
-  const handleSubmit = async () => {
+  const handleSubmi = async () => {
     const response = await login(data);
     console.log('Response:', response.data);
   
