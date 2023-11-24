@@ -56,10 +56,10 @@ const Login = () => {
   
     <div className="row d-flex justify-content-center ">
 
-    <div class="col-xl-8 col-lg-7 col-md-12 bg">
+    <div class="col-xl-6 col-lg-7 col-md-12 bg">
                
             </div>
-      <div className="col-xl-4 col-lg-5 col-md-12 login">
+      <div className="col-xl-5 col-lg-5 col-md-12 login ">
     
     <div className="login-section">
           <div className="logo clearfix">
