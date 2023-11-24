@@ -25,17 +25,17 @@ const dispatch = useDispatch();
     setData({ ...data,password: e.target.value });
   };
 
-  const handleSubmit = () => {
-    login(data)
-      .then((response) => {
-        console.log('Response:', response.data);
-        dispatch(loginSuccess(response.data));
-        // rest of your code
-      })
-      .catch((err) => console.error('Error:', err.response || err));
-  };
+  // const handleSubmit = () => {
+  //   login(data)
+  //     .then((response) => {
+  //       console.log('Response:', response.data);
+  //       dispatch(loginSuccess(response.data));
+  //       // rest of your code
+  //     })
+  //     .catch((err) => console.error('Error:', err.response || err));
+  // };
   
-  const handleSubmi = async () => {
+  const handleSubmit = async () => {
     const response = await login(data);
     console.log('Response:', response.data);
   
