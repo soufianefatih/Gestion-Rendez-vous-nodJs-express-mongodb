@@ -2,6 +2,7 @@ import React,{useState}from 'react';
 import "./auth.css";
 import {login} from '../../../services/AuthService';
 import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../../redux/action/action';
 
 
 
@@ -45,7 +46,7 @@ const dispatch = useDispatch();
     login(data)
       .then((response) => {
         console.log(response.data.user);
-        dispatch(login(response.data.user));
+        dispatch(loginSuccess(response.data.user));
         (async () => {
         
                 console.log(response.data.user)
