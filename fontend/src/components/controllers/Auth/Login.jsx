@@ -64,18 +64,11 @@ const Login = () => {
     <div className="login-section">
           <div className="logo clearfix">
             <a href="/">
-              ConfianceCar
+              Sign In
             </a>
           </div>
           <h3>Sign in into your account</h3>
-          <ul className="social">
-            <li><a href="#" className="facebook"><i className="fab fa-facebook-f facebook-i" /><span>Facebook</span></a></li>
-            <li><a href="#" className="twitter"><i className="fab fa-twitter twitter-i" /><span>Twitter</span></a></li>
-            <li><a href="#" className="google"><i className="fab fa-google google-i" /><span>Google</span></a></li>
-          </ul>
-          <div className="or-login clearfix">
-            <span>Or</span>
-          </div>
+        
           <div className="form-container">
             <form  onSubmit={(e) => {
                 e.preventDefault();
@@ -106,6 +99,14 @@ const Login = () => {
             </form>
           </div>
           <p>Don't have an account? <a href="/register" className="linkButton"> Register</a></p>
+          <div className="or-login clearfix">
+            <span>Or</span>
+          </div>
+          <ul className="social">
+            <li><a href="#" className="facebook"><i className="fab fa-facebook-f facebook-i" /><span>Facebook</span></a></li>
+            <li><a href="#" className="twitter"><i className="fab fa-twitter twitter-i" /><span>Twitter</span></a></li>
+            <li><a href="#" className="google"><i className="fab fa-google google-i" /><span>Google</span></a></li>
+          </ul>
         </div>
     
       </div>
