@@ -4,10 +4,10 @@
   });
 
   // Action
-export const loginSuccess = (user) => {
-    return {
-      type: 'LOGIN_SUCCESS',
-      payload: { user, accessToken: user.accessToken },
-    };
+export const loginSuccess = (userData) => {
+  const { user, accessToken } = userData;
+  return {
+    type: 'LOGIN_SUCCESS',
+    payload: { user, accessToken },
   };
- 
+};
