@@ -3,8 +3,6 @@ import "./auth.css";
 import {login} from '../../../services/AuthService';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../../redux/action/action';
-const lock = new Lock();
-
 
 
 const Login = () => {
@@ -25,33 +23,16 @@ const dispatch = useDispatch();
     setData({ ...data,password: e.target.value });
   };
 
-  // const handleSubmit = () => {
-  //   login(data)
-  //     .then((response) => {
-  //       console.log('Response:', response.data);
-  //       dispatch(loginSuccess(response.data));
-  //       // rest of your code
-  //     })
-  //     .catch((err) => console.error('Error:', err.response || err));
-  // };
-  
-  const handleSubmit = async () => {
-    const response = await login(data);
-    console.log('Response:', response.data);
-  
-    // Acquire the lock to ensure that only one thread can modify the state object at a time.
-    lock.acquire();
-  
-    try {
-      // Dispatch the loginSuccess action with the received user data.
-      dispatch(loginSuccess(response.data));
-    } finally {
-      // Release the lock.
-      lock.release();
-    }
-  
-    // rest of your code
+  const handleSubmit = () => {
+    login(data)
+      .then((response) => {
+        console.log('Response:', response.data);
+        dispatch(loginSuccess(response.data));
+        // rest of your code
+      })
+      .catch((err) => console.error('Error:', err.response || err));
   };
+ 
   
 
 
